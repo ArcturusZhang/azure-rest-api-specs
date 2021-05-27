@@ -6,6 +6,11 @@
       "integrationRepository": "AzureSDKAutomation/azure-sdk-for-go",
       "mainRepository": "Azure/azure-sdk-for-go"
     },
+    "azure-sdk-for-go-track2": {
+      "integrationRepository": "AzureSDKAutomation/azure-sdk-for-go",
+      "mainRepository": "Azure/azure-sdk-for-go",
+      "configFilePath": "swagger_to_sdk_config_track2.json"
+    },
     "azure-sdk-for-java": {
       "integrationRepository": "AzureSDKAutomation/azure-sdk-for-java",
       "mainRepository": "Azure/azure-sdk-for-java",
