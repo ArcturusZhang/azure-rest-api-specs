@@ -1,0 +1,8 @@
+{
+  "output-folder": ".",
+  "namespace": "Azure.Health.Deidentification",
+  "library-name": "Azure.Health.Deidentification",
+  "model-namespace": false,
+  "flavor": "azure",
+  "use-model-reader-writer": true
+}

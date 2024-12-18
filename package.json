@@ -20,6 +20,7 @@
     "@typespec/streams": "0.63.0",
     "@typespec/versioning": "0.63.0",
     "azure-rest-api-specs-eng-tools": "file:eng/tools",
+    "@azure-typespec/http-client-csharp": "file:C:/Users/dapzhang/Documents/Workspaces/azure-sdk-for-net/eng/packages/http-client-csharp/azure-typespec-http-client-csharp-1.0.0.tgz",
     "oav": "^3.5.1",
     "prettier": "~3.3.3",
     "typescript": "~5.6.2"

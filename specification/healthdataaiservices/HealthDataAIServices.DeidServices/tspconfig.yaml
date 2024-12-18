@@ -19,7 +19,7 @@ options:
     flavor: azure
     generate-test: true
     generate-sample: true
-  "@azure-tools/typespec-csharp":
+  "@azure-typespec/http-client-csharp":
     package-dir: "Azure.Health.Deidentification"
     namespace: "{package-dir}"
     clear-output-folder: true
