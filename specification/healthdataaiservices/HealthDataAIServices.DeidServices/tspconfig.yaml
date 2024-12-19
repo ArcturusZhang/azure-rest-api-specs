@@ -25,6 +25,7 @@ options:
     clear-output-folder: true
     model-namespace: false
     flavor: azure
+    emitter-output-dir: C:\Users\dapzhang\Documents\Workspaces\azure-sdk-for-net\sdk\healthdataaiservices\Azure.Health.Deidentification
   "@azure-tools/typespec-ts":
     package-dir: "azure-health-deidentification"
     title: DeidentificationClient
