@@ -9,12 +9,14 @@ import "./Neon.Postgres.Models/endpoints.tsp";
 import "./Neon.Postgres.Models/preflight.tsp";
 import "./LiftrBase.Data/main.tsp";
 
+import "@azure-tools/typespec-client-generator-core";
 import "@azure-tools/typespec-autorest";
 import "@azure-tools/typespec-azure-core";
 import "@azure-tools/typespec-azure-resource-manager";
 
 using TypeSpec.Http;
 using TypeSpec.Rest;
+using Azure.ClientGenerator.Core;
 using Azure.ResourceManager;
 using TypeSpec.Versioning;
 using LiftrBase.Data;
@@ -80,17 +82,18 @@ interface Organizations {
 
   @doc("Action to retrieve the PostgreSQL versions.")
   @added(Neon.Postgres.Versions.v2_preview)
-  @autoRoute
-  @armResourceAction(OrganizationResource)
-  @post
-  getPostgresVersions(
-    ...ResourceInstanceParameters<PgVersion>,
-
-    @doc("Post Action to retrieve the PostgreSQL versions.")
-    @body
-    parameters?: PgVersion,
-  ): ArmResponse<PgVersionsResult> | ErrorResponse;
+  getPostgresVersions is ArmProviderActionSync<
+    PgVersion,
+    ArmResponse<PgVersionsResult>,
+    Scope = Extension.ResourceGroup,
+    OptionalRequestBody = true
+  >;
 }
+
+@@clientName(Organizations.getPostgresVersions::parameters.body, "parameters");
+@@doc(Organizations.getPostgresVersions::parameters.body,
+  "Post Action to retrieve the PostgreSQL versions."
+);
 
 @armResourceOperations
 @added(Neon.Postgres.Versions.v2_preview)
@@ -101,17 +104,19 @@ interface Projects {
   list is ArmResourceListByParent<Project>;
 
   @doc("Action to retrieve the connection URI for the Neon Database.")
-  @autoRoute
-  @armResourceAction(ConnectionUriProperties)
-  @post
-  getConnectionUri(
-    ...ResourceInstanceParameters<Project>,
-
-    @doc("Additional parameters for retrieving the database connection URI.")
-    @body
-    connectionUriParameters: ConnectionUriProperties,
-  ): ArmResponse<ConnectionUriProperties> | ErrorResponse;
+  getConnectionUri is ArmResourceActionSync<
+    Project,
+    ConnectionUriProperties,
+    ArmResponse<ConnectionUriProperties>
+  >;
 }
+
+@@clientName(Projects.getConnectionUri::parameters.body,
+  "connectionUriParameters"
+);
+@@doc(Projects.getConnectionUri::parameters.body,
+  "Additional parameters for retrieving the database connection URI."
+);
 
 @armResourceOperations
 @added(Neon.Postgres.Versions.v2_preview)
@@ -123,17 +128,15 @@ interface Branches {
 
   @added(Neon.Postgres.Versions.v3_preview)
   @doc("Action to validate preflight checks.")
-  @autoRoute
-  @armResourceAction(PreflightCheckParameters)
-  @post
-  preflight(
-    ...ResourceInstanceParameters<Branch>,
-
-    @doc("Parameters for preflight checks.")
-    @body
-    parameters: PreflightCheckParameters,
-  ): ArmResponse<PreflightCheckResult> | ErrorResponse;
+  preflight is ArmResourceActionSync<
+    Branch,
+    PreflightCheckParameters,
+    ArmResponse<PreflightCheckResult>
+  >;
 }
+
+@@clientName(Branches.preflight::parameters.body, "parameters");
+@@doc(Branches.preflight::parameters.body, "Parameters for preflight checks.");
 
 @armResourceOperations
 @added(Neon.Postgres.Versions.v2_preview)
