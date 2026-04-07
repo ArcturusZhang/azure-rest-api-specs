@@ -28,7 +28,41 @@ using Azure.Core;
   "csharp"
 );
 
-@@scope(Keys.get, "!csharp");
+#suppress "@azure-tools/typespec-client-generator-core/client-option" "https://github.com/Azure/typespec-azure/issues/4104"
+#suppress "@azure-tools/typespec-client-generator-core/client-option-requires-scope" "https://github.com/Azure/typespec-azure/issues/4104"
+@@clientOption(Vault,
+  "resource-name-constraint",
+  #{
+    minLength: 3,
+    maxLength: 24,
+    pattern: "^[a-zA-Z][a-zA-Z0-9-]+[a-zA-Z0-9]$",
+  },
+  "csharp"
+);
+
+#suppress "@azure-tools/typespec-client-generator-core/client-option" "https://github.com/Azure/typespec-azure/issues/4104"
+#suppress "@azure-tools/typespec-client-generator-core/client-option-requires-scope" "https://github.com/Azure/typespec-azure/issues/4104"
+@@clientOption(ManagedHsm,
+  "resource-name-constraint",
+  #{
+    minLength: 3,
+    maxLength: 24,
+    pattern: "^[a-zA-Z][a-zA-Z0-9-]+[a-zA-Z0-9]$",
+  },
+  "csharp"
+);
+
+#suppress "@azure-tools/typespec-client-generator-core/client-option" "https://github.com/Azure/typespec-azure/issues/4104"
+#suppress "@azure-tools/typespec-client-generator-core/client-option-requires-scope" "https://github.com/Azure/typespec-azure/issues/4104"
+@@clientOption(Secret,
+  "resource-name-constraint",
+  #{
+    minLength: 1,
+    maxLength: 127,
+    pattern: "^[a-zA-Z0-9-]+$",
+  },
+  "csharp"
+);
 @@scope(Keys.createIfNotExist, "!csharp");
 @@scope(Keys.list, "!csharp");
 @@scope(KeyOperationGroup.getVersion, "!csharp");
