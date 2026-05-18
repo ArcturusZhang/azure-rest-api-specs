@@ -96,6 +96,10 @@ using Microsoft.Maintenance;
   "GetConfigurationAssignmentsByParent",
   "csharp"
 );
+@@clientName(ConfigurationAssignmentForResourceGroupOperationGroup.list,
+  "GetConfigurationAssignments",
+  "csharp"
+);
 @@clientName(ConfigurationAssignmentsForResourceGroup.createOrUpdate,
   "CreateOrUpdateConfigurationAssignmentByResourceGroup",
   "csharp"
