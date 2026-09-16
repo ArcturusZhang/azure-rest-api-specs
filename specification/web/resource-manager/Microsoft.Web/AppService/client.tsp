@@ -6162,6 +6162,11 @@ union ConfigReferenceSource {
   "csharp"
 );
 @@alternateType(
+  ResponseMessageEnvelopeRemotePrivateEndpointConnection.error,
+  Azure.Core.Foundations.Error,
+  "csharp"
+);
+@@alternateType(
   DatabaseConnectionOverview.resourceId,
   armResourceIdentifier,
   "csharp"
