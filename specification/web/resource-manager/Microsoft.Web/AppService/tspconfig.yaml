@@ -5,6 +5,7 @@ emit:
   - "@azure-tools/typespec-autorest"
 options:
   "@azure-typespec/http-client-csharp-mgmt":
+    api-version: "2025-05-01"
     namespace: "Azure.ResourceManager.AppService"
     emitter-output-dir: "{output-dir}/sdk/websites/{namespace}"
     enable-wire-path-attribute: true
